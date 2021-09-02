@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -12,22 +14,35 @@ namespace WcfService1
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
-        public string GetData(int value)
+        public void Add_Game(string Game_Name, string Game_Description, string Game_Image_Link, int Publishing_Admin_ID)
         {
-            return string.Format("You entered: {0}", value);
+            using (SqlConnection conn = new SqlConnection("Data Source=localhost; Initial Catalog=Game_Catalog_DB; Integrated Security=SSPI;"))
+            {
+                conn.Execute($"EXEC Add_Game '{Game_Name}', '{Game_Description}', '{Game_Image_Link}', 1");
+            }
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public bool Check_Email(string Email)
         {
-            if (composite == null)
+            using (SqlConnection conn = new SqlConnection("Data Source=localhost; Initial Catalog=Game_Catalog_DB; Integrated Security=SSPI;"))
             {
-                throw new ArgumentNullException("composite");
+                if (conn.Query($"EXEC Check_Admin_Email '{Email}'").FirstOrDefault() != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            if (composite.BoolValue)
+        }
+
+        public string Login_Admin(string Email, string Password)
+        {
+            using (SqlConnection conn = new SqlConnection("Data Source=localhost; Initial Catalog=Game_Catalog_DB; Integrated Security=SSPI;"))
             {
-                composite.StringValue += "Suffix";
+                return conn.Query($"EXEC Login_Admin '{Email}', '{Password}'").FirstOrDefault();
             }
-            return composite;
         }
     }
 }
