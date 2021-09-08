@@ -22,6 +22,7 @@ namespace WpfApp1
         public Admin_Login_View()
         {
             InitializeComponent();
+            DataContext = new Admin_Login_ViewModel();
         }
     }
 }

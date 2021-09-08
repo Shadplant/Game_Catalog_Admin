@@ -26,8 +26,7 @@
             Content="Login" 
             Margin="45,227,45,33" 
             Height="Auto"
-            Click="Login_Button_Click"
-            Command="{Binding Path=LoginCommand}"/>
+            Command="{Binding LoginCommand}"/>
 
         <!--Login box-->
         <Grid MaxHeight="50" Margin="45,-11,45,54">
@@ -36,7 +35,7 @@
                     materialDesign:HintAssist.Hint="Email" 
                     x:Name="Login_Box"
                     VerticalAlignment="Bottom"
-                    Text="{Binding Userinfo.Username}"
+                    Text="{Binding Email}"
                     Height="50">
             </TextBox>
         </Grid>
@@ -47,29 +46,26 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="Auto" MinWidth="30" />
             </Grid.ColumnDefinitions>
-            <PasswordBox
+            <!--<PasswordBox
                     Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
                     materialDesign:HintAssist.Hint="Password" 
                     x:Name="Password_Box"
                     VerticalAlignment="Bottom" 
                     Height="50" Grid.ColumnSpan="2"
                     Visibility="Visible">
-            </PasswordBox>
+            </PasswordBox>-->
             <TextBox
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     materialDesign:HintAssist.Hint="Password" 
                     x:Name="Password_Box_Revealed"
                     VerticalAlignment="Bottom" 
                     Height="50" Grid.ColumnSpan="2"
-                    Text="{Binding Userinfo.Password}"
-                    Visibility="Hidden">
+                    Text="{Binding Password}">
             </TextBox>
             <ToggleButton
                     x:Name="Show_Pass_Button"
                     Grid.Column="1"
                     Style="{StaticResource MaterialDesignActionToggleButton}"
-                    Checked="Show_Pass_Button_Checked"
-                    Unchecked="Show_Pass_Button_Unchecked"
                     IsChecked="False">
                 <ToggleButton.Background>
                     <SolidColorBrush Opacity="0"></SolidColorBrush>

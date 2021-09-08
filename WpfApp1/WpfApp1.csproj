@@ -82,7 +82,7 @@
     </Compile>
     <Compile Include="Model\Admin_Login_Model.cs" />
     <Compile Include="Model\Game_Add_Model.cs" />
-    <Compile Include="Model\IService1.cs" />
+    <Compile Include="Service\IService1.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="ViewModel\Admin_Login_ViewModel.cs" />
     <Compile Include="ViewModel\Game_Add_ViewModel.cs" />

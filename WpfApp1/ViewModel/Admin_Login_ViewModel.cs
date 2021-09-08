@@ -11,7 +11,7 @@ namespace WpfApp1
 {
     public class Admin_Login_ViewModel : INotifyPropertyChanged
     {
-        Game_Add_Model model = new Game_Add_Model();
+        Admin_Login_Model model = new Admin_Login_Model();
         private string email;
         private string password;
 
@@ -35,12 +35,12 @@ namespace WpfApp1
             }
         }
 
-        private RelayCommand add_game_command;
-        public RelayCommand Add_Game_Command
+        private RelayCommand login_command;
+        public RelayCommand Login_Command
         {
             get
             {
-                return add_game_command ?? (add_game_command = new RelayCommand(obj => Add_Game_ViewModel()));
+                return login_command ?? (login_command = new RelayCommand(obj => Login_Admin_ViewModel()));
             }
         }
 
@@ -48,25 +48,24 @@ namespace WpfApp1
         {
             try
             {
-                model.
-                MessageBox.Show("Success");
+                return model.Check_Email_Model(Email);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return false;
             }
         }
 
-        public void Login_User_ViewModel()
+        public void Login_Admin_ViewModel()
         {
             try
             {
                 if (Check_Email_ViewModel())
                 {
-
+                    model.Login_Admin_Model(Email, Password);
+                    MessageBox.Show("Success");
                 }
-                model.Add_Game_Model(name, description, image_link, admin_ID);
-                MessageBox.Show("Success");
             }
             catch (Exception ex)
             {
