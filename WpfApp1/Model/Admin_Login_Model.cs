@@ -16,14 +16,14 @@ namespace WpfApp1
             return Connection().Check_Email(Email);
         }
 
-        public void Login_Admin_Model(string Email, string Password)
+        public string Login_Admin_Model(string Email, string Password)
         {
-            Connection().Login_Admin(Email, Password);
+            return Connection().Login_Admin(Email, Password);
         }
 
         private IService1 Connection()
         {
-            Uri uri = new Uri("http://localhost:57268/Service1.svc");
+            Uri uri = new Uri("http://joesonadm-001-site1.ftempurl.com");
             EndpointAddress endpointAddress = new EndpointAddress(uri);
             BasicHttpBinding binding = new BasicHttpBinding();
             ChannelFactory<IService1> channelFactory = new ChannelFactory<IService1>(binding, endpointAddress);

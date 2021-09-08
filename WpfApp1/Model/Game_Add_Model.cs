@@ -19,7 +19,7 @@ namespace WpfApp1
 
         private IService1 Connection()
         {
-            Uri uri = new Uri("http://localhost:57268/Service1.svc");
+            Uri uri = new Uri("http://joesonadm-001-site1.ftempurl.com");
             EndpointAddress endpointAddress = new EndpointAddress(uri);
             BasicHttpBinding binding = new BasicHttpBinding();
             ChannelFactory<IService1> channelFactory = new ChannelFactory<IService1>(binding, endpointAddress);

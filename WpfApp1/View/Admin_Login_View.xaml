@@ -26,7 +26,7 @@
             Content="Login" 
             Margin="45,227,45,33" 
             Height="Auto"
-            Command="{Binding LoginCommand}"/>
+            Command="{Binding Login_Command}"/>
 
         <!--Login box-->
         <Grid MaxHeight="50" Margin="45,-11,45,54">

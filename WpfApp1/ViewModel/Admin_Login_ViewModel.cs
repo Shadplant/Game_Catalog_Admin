@@ -48,7 +48,7 @@ namespace WpfApp1
         {
             try
             {
-                return model.Check_Email_Model(Email);
+                return model.Check_Email_Model(Email.ToLower());
             }
             catch (Exception ex)
             {
@@ -63,8 +63,7 @@ namespace WpfApp1
             {
                 if (Check_Email_ViewModel())
                 {
-                    model.Login_Admin_Model(Email, Password);
-                    MessageBox.Show("Success");
+                    MessageBox.Show(model.Login_Admin_Model(Email.ToLower(), Password));
                 }
             }
             catch (Exception ex)

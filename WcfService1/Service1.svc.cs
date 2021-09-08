@@ -16,15 +16,12 @@ namespace WcfService1
     {
         public void Add_Game(string Game_Name, string Game_Description, string Game_Image_Link, int Publishing_Admin_ID)
         {
-            using (SqlConnection conn = new SqlConnection("Data Source=localhost; Initial Catalog=Game_Catalog_DB; Integrated Security=SSPI;"))
-            {
-                conn.Execute($"EXEC Add_Game '{Game_Name}', '{Game_Description}', '{Game_Image_Link}', 1");
-            }
+
         }
 
         public bool Check_Email(string Email)
         {
-            using (SqlConnection conn = new SqlConnection("Data Source=localhost; Initial Catalog=Game_Catalog_DB; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(""))
             {
                 if (conn.Query($"EXEC Check_Admin_Email '{Email}'").FirstOrDefault() != null)
                 {
@@ -39,9 +36,9 @@ namespace WcfService1
 
         public string Login_Admin(string Email, string Password)
         {
-            using (SqlConnection conn = new SqlConnection("Data Source=localhost; Initial Catalog=Game_Catalog_DB; Integrated Security=SSPI;"))
+            using (SqlConnection conn = new SqlConnection(""))
             {
-                return conn.Query($"EXEC Login_Admin '{Email}', '{Password}'").FirstOrDefault();
+                return conn.Query<string>($"EXEC Login_Admin '{Email}', '{Password}'").FirstOrDefault();
             }
         }
     }
